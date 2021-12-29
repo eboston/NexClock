@@ -479,6 +479,7 @@ void loop()
   if (oldMinutes != tmTime.tm_min)
   {
     displayTime();
+    writeSettings();
     oldMinutes = tmTime.tm_min;
   }
 
