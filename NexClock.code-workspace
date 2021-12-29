@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "NexClock",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.cps": "javascript",
+			"functional": "cpp"
+		}
+	}
+}
