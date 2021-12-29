@@ -339,6 +339,8 @@ void displayMetadata()
 
 	pRadio_t0.setText(streamArtistTitle.substr(nIdx + 3).c_str());
 	pRadio_t1.setText(streamArtistTitle.substr(0, nIdx - 0).c_str());
+
+	pClock_SongTitleArtist.setText(streamArtistTitle.c_str());
 }
 
 
@@ -707,6 +709,8 @@ void playRadio(bool state, bool saveChange)
 
 		pClock_b3.Set_background_color_bco(50712);
 		pClock_b3.Set_font_color_pco(0);
+		pClock_SongTitleArtist.setText("");
+		
 
 	}
 
@@ -717,9 +721,7 @@ void playRadio(bool state, bool saveChange)
 
 void pRadio_b0PushCallback(void *ptr)
 {
-	log_w("pRadio_b0PushCallback");
 	ClockSettings.volumeLevel--;
-	writeSettings();
 	pRadio_VolDisplay.setValue(ClockSettings.volumeLevel);
 	player.setVolume(ClockSettings.volumeLevel);
 }
@@ -727,9 +729,7 @@ void pRadio_b0PushCallback(void *ptr)
 
 void pRadio_b1PushCallback(void *ptr)
 {
-	log_w("pRadio_b1PushCallback");
 	ClockSettings.volumeLevel++;
-	writeSettings();
 	pRadio_VolDisplay.setValue(ClockSettings.volumeLevel);
 	player.setVolume(ClockSettings.volumeLevel);
 }

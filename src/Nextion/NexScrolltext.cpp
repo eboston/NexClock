@@ -14,19 +14,32 @@
  */
 #include "Nextion\NexScrolltext.h"
 
+/*
 NexScrolltext::NexScrolltext(uint8_t pid, uint8_t cid, const char *name)
     :NexTouch(pid, cid, name)
 {
 }
+*/
 
+NexScrolltext::NexScrolltext(NexPage* page, uint8_t cid, const char *name)
+    :NexTouch(page, cid, name)
+    ,__page(page)
+{
+}
+
+#if 0
 uint16_t NexScrolltext::getText(char *buffer, uint16_t len)
 {
+    return getAttrText("txt", buffer, len);
+
+/*    
     String cmd;
     cmd += "get ";
     cmd += getObjName();
     cmd += ".txt";
     sendCommand(cmd.c_str());
     return recvRetString(buffer,len);
+*/
 }
 
 bool NexScrolltext::setText(const char *buffer)
@@ -322,10 +335,17 @@ bool NexScrolltext::Set_cycle_tim(uint32_t number)
     sendCommand(cmd.c_str());
     return recvRetCommandFinished();
 }
+#endif
 
 
 bool NexScrolltext::enable(void)
 {
+    char cmd[64];
+    snprintf(cmd, sizeof(cmd), "%s.%s.en=1", __page->getObjName(), getObjName());
+    sendCommand(cmd);
+    return recvRetCommandFinished();
+
+/*
     char buf[10] = {0};
     String cmd;
     utoa(1, buf, 10);
@@ -335,10 +355,17 @@ bool NexScrolltext::enable(void)
 
     sendCommand(cmd.c_str());
     return recvRetCommandFinished();
+*/
 }
 
 bool NexScrolltext::disable(void)
 {
+    char cmd[64];
+    snprintf(cmd, sizeof(cmd), "%s.%s.en=1", __page->getObjName(), getObjName());
+    sendCommand(cmd);
+    return recvRetCommandFinished();
+
+/*
     char buf[10] = {0};
     String cmd;
     utoa(0, buf, 10);
@@ -348,4 +375,5 @@ bool NexScrolltext::disable(void)
 
     sendCommand(cmd.c_str());
     return recvRetCommandFinished();
+*/
 }

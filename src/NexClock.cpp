@@ -41,6 +41,8 @@ NexButton pClock_b2 = NexButton(&pageClock, 11, "b2");
 NexButton pClock_b3 = NexButton(&pageClock, 12, "b3");
 NexButton pClock_b4 = NexButton(&pageClock, 13, "b4");
 
+NexScrolltext pClock_SongTitleArtist = NexScrolltext(&pageClock, 15, "g0");
+
 
 // Page 2 - Setup
 NexCrop pSetup_q0 = NexCrop(&pageSetup, 1, "q0");
@@ -154,7 +156,6 @@ void pClock_b1PushCallback(void *ptr)
 
 void pClock_b3PushCallback(void *ptr)
 {
-  log_w("Toggle the radio");
   playRadio(!ClockSettings.bRadioOn);
 }
 

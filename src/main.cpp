@@ -411,6 +411,7 @@ void setup()
 
   ////////////////////////////////////////////////////////
   // Switch to Clock display
+  pClock_SongTitleArtist.setText("");
   pageClock.show();
 
   log_w("\n\n******** setup finished\n\n");
