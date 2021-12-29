@@ -17,7 +17,7 @@
 #ifndef __NEXSLIDER_H__
 #define __NEXSLIDER_H__
 
-#include "NexTouch.h"
+#include "Nexobject.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 
@@ -27,7 +27,7 @@
 /**
  * NexSlider component. 
  */
-class NexSlider: public NexTouch
+class NexSlider: public NexObject
 {
 public: /* methods */
     /**

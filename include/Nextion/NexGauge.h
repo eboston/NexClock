@@ -17,7 +17,7 @@
 #ifndef __NEXGAUGE_H__
 #define __NEXGAUGE_H__
 
-#include "NexTouch.h"
+#include "NexObject.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 

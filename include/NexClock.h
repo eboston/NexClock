@@ -61,7 +61,7 @@ extern NexVariable      pRadio_state;
 
 
 
-extern NexTouch *nex_listen_list[];
+extern NexObject *nex_listen_list[];
 
 
 void NexClockAttachCallbacks();

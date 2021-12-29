@@ -17,7 +17,7 @@
 #ifndef __NEXCROP_H__
 #define __NEXCROP_H__
 
-#include "NexTouch.h"
+#include "NexObject.h"
 //#include "NexHardware.h"
 #include "NexPage.h"
 
@@ -29,7 +29,7 @@
 /**
  * NexCrop component. 
  */
-class NexCrop: public NexTouch
+class NexCrop: public NexObject
 {
 public: /* methods */
 
@@ -37,27 +37,7 @@ public: /* methods */
      * @copydoc NexObject::NexObject(uint8_t pid, uint8_t cid, const char *name);
      */
     NexCrop(NexPage* page, uint8_t cid, const char *name)
-        :NexTouch(page, cid, name) {}
-
-	/**
-     * Get the number of picture. 
-     *
-     * @param number - an output parameter to save the number of picture. 
-     * 
-     * @retval true - success. 
-     * @retval false - failed. 
-     */
-    bool getPic(uint32_t *number) { return getAttrNumber("picc", number); }
-    
-    /**
-     * Set the number of picture. 
-     *
-     * @param number - the number of picture. 
-     * 
-     * @retval true - success. 
-     * @retval false - failed. 
-     */
-    bool setPic(uint32_t number) { return setAttrNumber("picc", number); }
+        :NexObject(page, cid, name) {}
 };
 
 /**

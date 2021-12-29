@@ -17,7 +17,7 @@
 #ifndef _NEXRTC_H
 #define _NEXRTC_H
      
-#include "NexTouch.h"
+#include "Nexobject.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 

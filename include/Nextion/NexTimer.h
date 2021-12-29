@@ -17,7 +17,7 @@
 #ifndef __NEXTIMER_H__
 #define __NEXTIMER_H__
 
-#include "NexTouch.h"
+#include "Nexobject.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 
@@ -31,7 +31,7 @@
  * must be greater than 50
  * 
  */
-class NexTimer: public NexTouch
+class NexTimer: public NexObject
 {
 public: /* methods */
 
@@ -49,7 +49,7 @@ public: /* methods */
      *
      * @note If calling this method multiply, the last call is valid. 
      */
-    void attachTimer(NexTouchEventCb timer, void *ptr = NULL);
+    void attachTimer(NexObjectEventCb timer, void *ptr = NULL);
 
     /**
      * Detach an callback function. 

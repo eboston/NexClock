@@ -217,7 +217,7 @@ bool recvRetCommandFinished(uint32_t timeout)
 }
 
 
-void nexLoop(NexTouch *nex_listen_list[])
+void nexLoop(NexObject *nex_listen_list[])
 {
     static uint8_t __buffer[10];
     
@@ -242,7 +242,7 @@ void nexLoop(NexTouch *nex_listen_list[])
                 
                 if (0xFF == __buffer[4] && 0xFF == __buffer[5] && 0xFF == __buffer[6])
                 {
-                    NexTouch::iterate(nex_listen_list, __buffer[1], __buffer[2], (int32_t)__buffer[3]);
+                    NexObject::iterate(nex_listen_list, __buffer[1], __buffer[2], (int32_t)__buffer[3]);
                 }
                 
             }

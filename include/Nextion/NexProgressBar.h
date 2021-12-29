@@ -17,7 +17,7 @@
 #ifndef __NEXPROGRESSBAR_H__
 #define __NEXPROGRESSBAR_H__
 
-#include "NexTouch.h"
+#include "Nexobject.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 

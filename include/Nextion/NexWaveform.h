@@ -16,7 +16,6 @@
 #ifndef __NEXWAVEFORM_H__
 #define __NEXWAVEFORM_H__
 
-#include "NexTouch.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 

@@ -32,6 +32,102 @@ NexObject::NexObject(NexPage* page, uint8_t cid, const char *name)
 }
 
 
+bool NexObject::enable(bool state)
+{
+    char cmd[64];
+    snprintf(cmd, sizeof(cmd), "%s.%s.en=%d", __page->getObjName(), getObjName(), state);
+    sendCommand(cmd);
+    return recvRetCommandFinished();
+}
+
+
+
+
+
+
+void NexObject::attachPush(NexObjectEventCb push, void *ptr)
+{
+    this->__cb_push = push;
+    this->__cbpush_ptr = ptr;
+}
+
+void NexObject::detachPush(void)
+{
+    this->__cb_push = NULL;
+    this->__cbpush_ptr = NULL;
+}
+
+void NexObject::attachPop(NexObjectEventCb pop, void *ptr)
+{
+    this->__cb_pop = pop;
+    this->__cbpop_ptr = ptr;
+}
+
+void NexObject::detachPop(void)
+{
+    this->__cb_pop = NULL;    
+    this->__cbpop_ptr = NULL;
+}
+
+void NexObject::push(void)
+{
+    if (__cb_push)
+    {
+        __cb_push(__cbpush_ptr);
+    }
+}
+
+void NexObject::pop(void)
+{
+    if (__cb_pop)
+    {
+        __cb_pop(__cbpop_ptr);
+    }
+}
+
+void NexObject::iterate(NexObject **list, uint8_t pid, uint8_t cid, int32_t event)
+{
+    NexObject *e = NULL;
+    uint16_t i = 0;
+
+    if (NULL == list)
+    {
+        return;
+    }
+    
+    for(i = 0; (e = list[i]) != NULL; i++)
+    {
+        if (e->getObjPid() == pid && e->getObjCid() == cid)
+        {
+            e->printObjInfo();
+            if (NEX_EVENT_PUSH == event)
+            {
+                e->push();
+            }
+            else if (NEX_EVENT_POP == event)
+            {
+                e->pop();
+            }
+            
+            break;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 uint16_t NexObject::getAttrText(const char* attr, char* buffer, uint16_t len)
 {
     snprintf(cmd, sizeof(cmd), "get %s.%s.%s", __page->getObjName(), getObjName(), attr);

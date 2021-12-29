@@ -81,7 +81,7 @@ NexVariable pRadio_state = NexVariable(5, 12, "state");
 
 
 
-NexTouch *nex_listen_list[] =
+NexObject *nex_listen_list[] =
 {
 //  &pClock_b0,
 //  &pClock_b1,

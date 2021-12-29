@@ -17,7 +17,7 @@
 #ifndef __NEXPICTURE_H__
 #define __NEXPICTURE_H__
 
-#include "NexTouch.h"
+#include "Nexobject.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 
@@ -27,7 +27,7 @@
 /**
  * NexPicture component. 
  */
-class NexPicture: public NexTouch
+class NexPicture: public NexObject
 {
 public: /* methods */
     /**

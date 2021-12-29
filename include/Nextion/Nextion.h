@@ -19,7 +19,6 @@
 
 #include "Arduino.h"
 #include "NexConfig.h"
-#include "NexTouch.h"
 #include "NexHardware.h"
 
 #include "NexButton.h"

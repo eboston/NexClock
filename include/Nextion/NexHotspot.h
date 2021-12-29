@@ -17,7 +17,7 @@
 #ifndef __NEXHOTSPOT_H__
 #define __NEXHOTSPOT_H__
 
-#include "NexTouch.h"
+#include "NexObject.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 
@@ -27,7 +27,7 @@
 /**
  * NexHotspot component. 
  */
-class NexHotspot: public NexTouch
+class NexHotspot: public NexObject
 {
 public: /* methods */
     /**

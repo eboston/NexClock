@@ -15,7 +15,7 @@
 #include "Nextion\NexRadio.h"
 
 NexRadio::NexRadio(uint8_t pid, uint8_t cid, const char *name)
-    :NexTouch(pid, cid, name)
+    :NexObject(pid, cid, name)
 {
 }
 

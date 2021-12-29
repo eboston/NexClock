@@ -16,7 +16,7 @@
 #include "Nextion\NexDualStateButton.h"
 
 NexDSButton::NexDSButton(uint8_t pid, uint8_t cid, const char *name)
-    :NexTouch(pid, cid, name)
+    :NexObject(pid, cid, name)
 {
 }
 

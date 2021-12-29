@@ -16,18 +16,18 @@
 #include "Nextion\NexTimer.h"
 
 NexTimer::NexTimer(uint8_t pid, uint8_t cid, const char *name)
-    :NexTouch(pid, cid, name)
+    :NexObject(pid, cid, name)
 {
 }
 
-void NexTimer::attachTimer(NexTouchEventCb timer, void *ptr)
+void NexTimer::attachTimer(NexObjectEventCb timer, void *ptr)
 {
-    NexTouch::attachPop(timer, ptr);
+    NexObject::attachPop(timer, ptr);
 }
 
 void NexTimer::detachTimer(void)
 {
-    NexTouch::detachPop();
+    NexObject::detachPop();
 }
 
 bool NexTimer::getCycle(uint32_t *number)

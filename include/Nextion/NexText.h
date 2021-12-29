@@ -17,7 +17,7 @@
 #ifndef __NEXTEXT_H__
 #define __NEXTEXT_H__
 
-#include "NexTouch.h"
+#include "Nexobject.h"
 #include "NexHardware.h"
 #include "NexPage.h"
 
@@ -29,144 +29,15 @@
 /**
  * NexText component.
  */
-class NexText: public NexTouch
+class NexText: public NexObject
 {
 public: /* methods */
     /**
      * @copydoc NexObject::NexObject(uint8_t pid, uint8_t cid, const char *name);
      */
     NexText(NexPage* page, uint8_t cid, const char *name)
-        : NexTouch(page, cid, name) { }
-    
-    /**
-     * Get text attribute of component.
-     *
-     * @param buffer - buffer storing text returned. 
-     * @param len - length of buffer. 
-     * @return The real length of text returned. 
-     */
-    uint16_t getText(char *buffer, uint16_t len) { return getAttrText("txt", buffer, len); }
-    
-    /**
-     * Set text attribute of component.
-     *
-     * @param buffer - text buffer terminated with '\0'. 
-     * @return true if success, false for failure. 
-     */
-    bool setText(const char *buffer) { return setAttrText("txt", buffer); }
-	
-    /**
-     * Get bco attribute of component
-     *
-     * @param number - buffer storing data retur
-     * @return the length of the data 
-     */
-    uint32_t Get_background_color_bco(uint32_t *number) { return getAttrNumber("bco", number); }
-    	
-    /**
-     * Set bco attribute of component
-     *
-     * @param number - To set up the data
-     * @return true if success, false for failure
-     */
-    bool Set_background_color_bco(uint32_t number) { return setAttrNumber("bco", number); }
-	
-    /**
-     * Get pco attribute of component
-     *
-     * @param number - buffer storing data retur
-     * @return the length of the data 
-     */
-    uint32_t Get_font_color_pco(uint32_t *number) { return getAttrNumber("pco", number); }
+        : NexObject(page, cid, name) { }
 
-    /**
-     * Set pco attribute of component
-     *
-     * @param number - To set up the data
-     * @return true if success, false for failure
-     */
-    bool Set_font_color_pco(uint32_t number) { return setAttrNumber("pco", number); }
-	
-    /**
-     * Get xcen attribute of component
-     *
-     * @param number - buffer storing data retur
-     * @return the length of the data 
-     */
-    uint32_t Get_place_xcen(uint32_t *number) { return getAttrNumber("xcen", number); }
-
-    /**
-     * Set xcen attribute of component
-     *
-     * @param number - To set up the data
-     * @return true if success, false for failure
-     */
-    bool Set_place_xcen(uint32_t number) { return setAttrNumber("xcen", number); }
-	
-    /**
-     * Get ycen attribute of component
-     *
-     * @param number - buffer storing data retur
-     * @return the length of the data 
-     */
-    uint32_t Get_place_ycen(uint32_t *number) { return getAttrNumber("ycan", number); }
-
-    /**
-     * Set ycen attribute of component
-     *
-     * @param number - To set up the data
-     * @return true if success, false for failure
-     */
-    bool Set_place_ycen(uint32_t number) { return setAttrNumber("ycen", number); }
-	
-    /**
-     * Get font attribute of component
-     *
-     * @param number - buffer storing data retur
-     * @return the length of the data 
-     */
-    uint32_t getFont(uint32_t *number) { return getAttrNumber("font", number); }
-	
-    /**
-     * Set font attribute of component
-     *
-     * @param number - To set up the data
-     * @return true if success, false for failure
-     */
-    bool setFont(uint32_t number) { return setAttrNumber("font", number); }
-	
-    /**
-     * Get picc attribute of component
-     *
-     * @param number - buffer storing data retur
-     * @return the length of the data 
-     */
-    uint32_t Get_background_crop_picc(uint32_t *number) { return getAttrNumber("picc", number); }
-
-    /**
-     * Set picc attribute of component
-     *
-     * @param number - To set up the data
-     * @return true if success, false for failure
-     */
-    bool Set_background_crop_picc(uint32_t number) { return setAttrNumber("picc", number); }
-	
-    /**
-     * Get pic attribute of component
-     *
-     * @param number - buffer storing data retur
-     * @return the length of the data 
-     */
-    uint32_t Get_background_image_pic(uint32_t *number) { return getAttrNumber("pic", number); }
-
-    /**
-     * Set pic attribute of component
-     *
-     * @param number - To set up the data
-     * @return true if success, false for failure
-     */
-    bool Set_background_image_pic(uint32_t number) { return setAttrNumber("pic", number); }
-    
 };
 
 /**

@@ -17,7 +17,6 @@
 #ifndef __NEXVARRIABLE_H__
 #define __NEXVARRIABLE_H__
 
-#include "NexTouch.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 
@@ -28,11 +27,11 @@
  * NexButton component. 
  *
  * Commonly, you want to do something after push and pop it. It is recommanded that only
- * call @ref NexTouch::attachPop to satisfy your purpose. 
+ * call @ref NexObject::attachPop to satisfy your purpose. 
  * 
- * @warning Please do not call @ref NexTouch::attachPush on this component, even though you can. 
+ * @warning Please do not call @ref NexObject::attachPush on this component, even though you can. 
  */
-class NexVariable: public NexTouch
+class NexVariable: public NexObject
 {
 public: /* methods */
 

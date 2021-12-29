@@ -161,12 +161,12 @@ void pSetup_q0PushCallback(void *ptr)
 {
   uint32_t number = 0;
 
-  pSetup_q0.getPic(&number);
+  pSetup_q0.Get_background_crop_picc(&number);
 
   number += 1;
   number %= 2;
 
-  pSetup_q0.setPic(number);
+  pSetup_q0.Set_background_crop_picc(number);
 
   ClockSettings.bFlashColon = number;
   writeSettings();
@@ -177,12 +177,12 @@ void pSetup_q1PushCallback(void *ptr)
 {
   uint32_t number = 0;
 
-  pSetup_q1.getPic(&number);
+  pSetup_q1.Get_background_crop_picc(&number);
 
   number += 1;
   number %= 2;
 
-  pSetup_q1.setPic(number);
+  pSetup_q1.Set_background_crop_picc(number);
 
   ClockSettings.b24Hour = number;
   writeSettings();

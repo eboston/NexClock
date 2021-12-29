@@ -16,7 +16,7 @@
 #define __NEXHARDWARE_H__
 #include <Arduino.h>
 #include "NexConfig.h"
-#include "NexTouch.h"
+#include "NexObject.h"
 
 /**
  * @addtogroup CoreAPI 
@@ -34,7 +34,7 @@
  * @warning This function must be called repeatedly to response touch events
  *  from Nextion touch panel. Actually, you should place it in your loop function. 
  */
-void nexLoop(NexTouch *nex_listen_list[]);
+void nexLoop(NexObject *nex_listen_list[]);
 
 /**
  * @}

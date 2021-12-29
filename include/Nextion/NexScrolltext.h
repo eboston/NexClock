@@ -17,7 +17,7 @@
 #ifndef __NEXSCROLLTEXT_H__
 #define __NEXSCROLLTEXT_H__
 
-#include "NexTouch.h"
+#include "Nexobject.h"
 #include "NexHardware.h"
 #include "NexScrolltext.h"
 /**
@@ -28,16 +28,17 @@
 /**
  * NexText component.
  */
-class NexScrolltext: public NexTouch
+class NexScrolltext: public NexObject
 {
 private:
-    NexPage* __page;
+//    NexPage* __page;
 
 public: /* methods */
     /**
      * @copydoc NexObject::NexObject(uint8_t pid, uint8_t cid, const char *name);
      */
-    NexScrolltext(NexPage* page, uint8_t cid, const char *name);
+    NexScrolltext(NexPage* page, uint8_t cid, const char *name)
+        : NexObject(page, cid, name) { }
     
     /**
      * Get text attribute of component.

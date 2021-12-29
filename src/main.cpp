@@ -197,7 +197,7 @@ void NexClockLoopTask(void *parameter)
 
           if (0xFF == __buffer[4] && 0xFF == __buffer[5] && 0xFF == __buffer[6])
           {
-            NexTouch::iterate(nex_listen_list, __buffer[1], __buffer[2], (int32_t)__buffer[3]);
+            NexObject::iterate(nex_listen_list, __buffer[1], __buffer[2], (int32_t)__buffer[3]);
           }
         }
       }

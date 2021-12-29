@@ -17,7 +17,7 @@
 #ifndef _NEXGPIO_H
 #define _NEXGPIO_H
      
-#include "NexTouch.h"
+#include "NexObject.h"
 #include "NexHardware.h"
 /**
  * @addtogroup Component 
