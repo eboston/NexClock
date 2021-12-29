@@ -172,7 +172,6 @@ TaskHandle_t NexClockLoopTaskHandle;
 
 void NexClockLoopTask(void *parameter)
 {
-//	static unsigned long prevMillisM = 0;
   static uint8_t __buffer[10];
   
   uint16_t i;
@@ -180,15 +179,6 @@ void NexClockLoopTask(void *parameter)
   
   while (true)
   {
-/*
-    if (millis() - prevMillisM > 60000)
-    {
-      unsigned long remainingStack = uxTaskGetStackHighWaterMark(NULL);
-      log_w("Free stack:%lu", remainingStack);
-      prevMillisM = millis();
-    }
-*/
-
     while (nexSerial.available() > 0)
     {   
       delay(10);
@@ -237,11 +227,6 @@ void setup()
   
   NexClockAttachCallbacks();
 
-  //pRadio_t0.setText("");
-  //pRadio_t1.setText("");
-  //pRadio_t2.setText("");
-  //pRadio_t3.setText("");
-  
   ////////////////////////////////////////////////////////
   // Start Filesystem and read settings
   SPI.begin();
@@ -299,7 +284,6 @@ void setup()
     pUpload_t1.setText("");
 
     vTaskSuspend(playMusicTaskHandle);
-//    vTaskSuspend(handleIncomingRadioDataTaskHandle);
     vTaskSuspend(NexClockLoopTaskHandle);
 
     log_w("ArduinoOTA: %s", msg);
@@ -427,9 +411,6 @@ void setup()
 
   ////////////////////////////////////////////////////////
   // Switch to Clock display
-//  pageClock.show();
-//  pRadio_state.setValue(1);
-  sendCommand("Radio.state.val=0");
   pageClock.show();
 
   log_w("\n\n******** setup finished\n\n");
@@ -441,7 +422,6 @@ void loop()
   ArduinoOTA.handle();
 
   handleIncomingRadioData();
-//  NexClockLoop();
 
   // Wait for alarm tick (set to 1hz. in setup()).  Keep looping until we get the signal.
   if(xSemaphoreTake(timerLoopSemaphore, ( TickType_t ) 1) == pdTRUE)
@@ -451,7 +431,6 @@ void loop()
   }
 
   handleIncomingRadioData();
-//  NexClockLoop();
 
 
   if (oldSeconds != tmTime.tm_sec)
@@ -474,7 +453,6 @@ void loop()
   }
 
   handleIncomingRadioData();
-//  NexClockLoop();
 
   if (oldMinutes != tmTime.tm_min)
   {
@@ -484,7 +462,6 @@ void loop()
   }
 
   handleIncomingRadioData();
-//  NexClockLoop();
 
   if (oldDay != tmTime.tm_mday)
   {
@@ -493,7 +470,6 @@ void loop()
   }
 
   handleIncomingRadioData();
-//  NexClockLoop();
 }
 
 
