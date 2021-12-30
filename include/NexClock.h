@@ -31,20 +31,20 @@ extern NexButton        pClock_b1;
 extern NexButton        pClock_b2;
 extern NexButton        pClock_b3;
 extern NexButton        pClock_b4;
-
 extern NexScrolltext    pClock_SongTitleArtist;
-
-extern NexText          pUpload_t0;
-extern NexText          pUpload_t1;
-extern NexProgressBar   pUpload_j0;
 
 extern NexButton        pSetup_b0;
 extern NexButton        pSetup_b1;
 extern NexButton        pSetup_b2;
 extern NexButton        pSetup_b3;
 extern NexButton        pSetup_b4;
-extern NexCrop          pSetup_q0;
-extern NexCrop          pSetup_q1;
+extern NexCrop          pSetup_FlashColon;
+extern NexCrop          pSetup_24Hour;
+extern NexCrop          pSetup_Metadata;
+
+extern NexText          pUpload_t0;
+extern NexText          pUpload_t1;
+extern NexProgressBar   pUpload_j0;
 
 extern NexButton        Radio_b0;
 extern NexButton        pRadio_b1;
@@ -56,6 +56,7 @@ extern NexText          pRadio_t0;
 extern NexText          pRadio_t1;
 extern NexText          pRadio_t2;
 extern NexText          pRadio_t3;
+extern NexText          pRadio_Time;
 extern NexNumber        pRadio_VolDisplay;
 extern NexVariable      pRadio_state;
 

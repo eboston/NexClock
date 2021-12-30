@@ -10,6 +10,7 @@ typedef struct Settings_struct
     char        szSSID[16];
     char        szPWD[16];
     uint8_t     volumeLevel;
+    bool        bMetadata;
 //    NexPage*    plastPage;
 } Settings;
 
@@ -30,8 +31,9 @@ bool writeSettings();
 bool readSettings();
 void ApplySettingToPage();
 
-void pSetup_q0PushCallback(void *ptr);
-void pSetup_q1PushCallback(void *ptr);
+void pSetup_FlashColon_PushCallback(void *ptr);
+void pSetup_24Hour_PushCallback(void *ptr);
+void pSetup_Metadata_PushCallback(void *ptr);
 
 
 

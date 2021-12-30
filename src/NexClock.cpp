@@ -45,8 +45,9 @@ NexScrolltext pClock_SongTitleArtist = NexScrolltext(&pageClock, 15, "g0");
 
 
 // Page 2 - Setup
-NexCrop pSetup_q0 = NexCrop(&pageSetup, 1, "q0");
-NexCrop pSetup_q1 = NexCrop(&pageSetup, 3, "q1");
+NexCrop pSetup_FlashColon = NexCrop(&pageSetup, 1, "q0");
+NexCrop pSetup_24Hour     = NexCrop(&pageSetup, 3, "q1");
+NexCrop pSetup_Metadata   = NexCrop(&pageSetup, 8, "q2");
 
 NexButton pSetup_b0 = NexButton(&pageSetup,  2, "b0");
 NexButton pSetup_b1 = NexButton(&pageSetup,  4, "b1");
@@ -67,6 +68,7 @@ NexText pRadio_t0 = NexText(&pageRadio,  6, "t0");
 NexText pRadio_t1 = NexText(&pageRadio,  7, "t1");
 NexText pRadio_t2 = NexText(&pageRadio,  8, "t2");
 NexText pRadio_t3 = NexText(&pageRadio, 10, "t3");
+NexText pRadio_Time = NexText(&pageRadio, 17, "t4");
 
 NexNumber pRadio_VolDisplay = NexNumber(&pageRadio, 11, "n0");
 
@@ -83,15 +85,11 @@ NexVariable pRadio_state = NexVariable(5, 12, "state");
 
 NexObject *nex_listen_list[] =
 {
-//  &pClock_b0,
-//  &pClock_b1,
-//  &pClock_b2,
   &pClock_b3,
-//  &pClock_b4,
 
-  &pSetup_q0,
-  &pSetup_q1,
-  //&p2b0,
+  &pSetup_FlashColon,
+  &pSetup_24Hour,
+  &pSetup_Metadata,
 
   &pRadio_b0,
   &pRadio_b1,
@@ -118,8 +116,6 @@ bool NexClockInit(int8_t rxPin, int8_t txPin)
     ret2 = recvRetCommandFinished(100);
     return (ret1 && ret2);
 
-
-/*
     if (ret1 && ret2)
     {
       // Change the baud to 115200
@@ -138,7 +134,6 @@ bool NexClockInit(int8_t rxPin, int8_t txPin)
     }
 
     return 0;
-*/
 }
 
 
@@ -166,8 +161,9 @@ void NexClockAttachCallbacks()
     pClock_b1.attachPush(pClock_b1PushCallback);
     pClock_b3.attachPush(pClock_b3PushCallback);
 
-    pSetup_q0.attachPush(pSetup_q0PushCallback);
-    pSetup_q1.attachPush(pSetup_q1PushCallback);
+    pSetup_FlashColon.attachPush(pSetup_FlashColon_PushCallback);
+    pSetup_24Hour.attachPush(pSetup_24Hour_PushCallback);
+    pSetup_Metadata.attachPush(pSetup_Metadata_PushCallback);
 
     pRadio_b0.attachPush(pRadio_b0PushCallback);
     pRadio_b1.attachPush(pRadio_b1PushCallback);

@@ -122,6 +122,7 @@ bool stationConnect(int stationNo)
 	pRadio_t0.setText("Connecting to station");
 	pRadio_t1.setText("");
 	pRadio_t2.setText(radioStation[stationNo].friendlyName);
+	pClock_SongTitleArtist.setText("");
 
 	log_w("--------------------------------------");
 	log_w("        Connecting to station %d", stationNo);
@@ -136,16 +137,10 @@ bool stationConnect(int stationNo)
 	pCircBuffer->flush();
 	nextMetadata = 0;
 
-	// ****** This will be a settings option
-	// Determine whether we want ICY metadata
-//	METADATA = digitalRead(ICYDATAPIN) == HIGH;
+	METADATA = ClockSettings.bMetadata;
 
 	// For THIS radio station have we FORCED meta data to be ignored?
-	METADATA = radioStation[stationNo].useMetaData;
-	if (!radioStation[stationNo].useMetaData)
-	{
-		log_w("METADATA ignored for this radio station.");
-	}
+	METADATA = METADATA ? radioStation[stationNo].useMetaData : METADATA;
 
 	// Set the metadataInterval value to zero so we can detect that we found a valid one
 	metaDataInterval = 0;

@@ -129,14 +129,19 @@ void displayTime()
 {
   char msg[128];
 
-  snprintf(msg, sizeof(msg), "%02d%02d", ClockSettings.b24Hour ? (tmTime.tm_hour + tmTime.tm_isdst) % 24 : ((tmTime.tm_hour + tmTime.tm_isdst) % 12) ? ((tmTime.tm_hour + tmTime.tm_isdst) % 12) : 12, tmTime.tm_min);
+  snprintf(msg, sizeof(msg), "%02d:%02d %cm", 
+    ClockSettings.b24Hour ? (tmTime.tm_hour + tmTime.tm_isdst) % 24 : ((tmTime.tm_hour + tmTime.tm_isdst) % 12) ? ((tmTime.tm_hour + tmTime.tm_isdst) % 12) : 12, 
+    tmTime.tm_min,
+    ((tmTime.tm_hour + tmTime.tm_isdst) % 24) >= 12 ? 'p' : 'a');
+
+  pRadio_Time.setText(msg);
 
   if (!ClockSettings.b24Hour)
     if (msg[0] == '0') msg[0] = ' ';
   pClock_t3.setText(String(msg[0]).c_str());
   pClock_t4.setText(String(msg[1]).c_str());
-  pClock_t5.setText(String(msg[2]).c_str());
-  pClock_t6.setText(String(msg[3]).c_str());
+  pClock_t5.setText(String(msg[3]).c_str());
+  pClock_t6.setText(String(msg[4]).c_str());
   
 
   if (ClockSettings.b24Hour)
@@ -219,7 +224,10 @@ void setup()
   ////////////////////////////////////////////////////////
   // Start Nextion display
 
-  NexClockInit(25, 27);
+  if (!NexClockInit(25, 27))
+  {
+    log_w("Nextion display initialization failed");
+  }
 
   delay(500);
 

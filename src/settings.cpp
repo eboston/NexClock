@@ -6,6 +6,7 @@
 
 #include "NexClock.h"
 #include "settings.h"
+#include "inetradio.h"
 
 #define CONFIG  "/conf"
 #define FORMAT_FS_IF_FAILED true
@@ -23,6 +24,7 @@ Settings ClockSettings =
     "Oxford-HASP",  // SSID
     "HermanHASP",   // Password
     80,             // Volume Level
+    true,           // Metadata
 };
 
 
@@ -34,6 +36,8 @@ void dumpSettings()
     log_w("  Last Station = %d", ClockSettings.lastRadioStation);
     log_w("      Radio On = %d", ClockSettings.bRadioOn);
     log_w("          SSID = '%s'", ClockSettings.szSSID);
+    log_w("        Volume = %d", ClockSettings.volumeLevel);
+    log_w("      Metadata = %d", ClockSettings.bMetadata);
 }
 
 
@@ -92,6 +96,7 @@ void ApplySettingToPage()
 {
     setSetupToggle("q0", ClockSettings.bFlashColon);
     setSetupToggle("q1", ClockSettings.b24Hour);
+    setSetupToggle("q2", ClockSettings.bMetadata);
 }
 
 
@@ -157,34 +162,53 @@ bool StartLITTLEFS()
 }
 
 
-void pSetup_q0PushCallback(void *ptr)
+void pSetup_FlashColon_PushCallback(void *ptr)
 {
   uint32_t number = 0;
 
-  pSetup_q0.Get_background_crop_picc(&number);
+  pSetup_FlashColon.Get_background_crop_picc(&number);
 
   number += 1;
   number %= 2;
 
-  pSetup_q0.Set_background_crop_picc(number);
+  pSetup_FlashColon.Set_background_crop_picc(number);
 
   ClockSettings.bFlashColon = number;
   writeSettings();
 }
 
 
-void pSetup_q1PushCallback(void *ptr)
+void pSetup_24Hour_PushCallback(void *ptr)
 {
+log_w("pSetup_24Hour_PushCallback");
   uint32_t number = 0;
 
-  pSetup_q1.Get_background_crop_picc(&number);
+  pSetup_24Hour.Get_background_crop_picc(&number);
 
   number += 1;
   number %= 2;
 
-  pSetup_q1.Set_background_crop_picc(number);
+  pSetup_24Hour.Set_background_crop_picc(number);
 
   ClockSettings.b24Hour = number;
   writeSettings();
+}
+
+
+void pSetup_Metadata_PushCallback(void *ptr)
+{
+log_w("pSetup_Metadata_PushCallback");
+  uint32_t number = 0;
+
+  pSetup_Metadata.Get_background_crop_picc(&number);
+
+  number += 1;
+  number %= 2;
+
+  pSetup_Metadata.Set_background_crop_picc(number);
+
+  ClockSettings.bMetadata = number;
+  writeSettings();
+  stationConnect(ClockSettings.lastRadioStation);
 }
 

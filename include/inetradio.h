@@ -10,6 +10,7 @@ void handleIncomingRadioData();
 void mp3Start();
 void handleIncomingRadioDataTask(void *parameter = NULL);
 void playRadio(bool state, bool saveChange = true);
+bool stationConnect(int stationNo);
 
 void pRadio_b0PushCallback(void *ptr);
 void pRadio_b1PushCallback(void *ptr);
